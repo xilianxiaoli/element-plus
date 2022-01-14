@@ -6,12 +6,14 @@ import { isVue2, h as hInVue2, defineComponent } from 'vue-demi'
 
 type ListenersTransformRules = Record<string, string>
 
+// transformRules 用来修改事件名称，同时原先事件保留 {原有的事件触发名称:新定义的事件触发名称} eg:{A:B}，组件已纯在A事件，AB事件将响应同一个动作
 export const transformComponent = <T extends Record<string, any>>(
   tag: any,
   transformRules?: ListenersTransformRules,
   defaultProps?: Partial<T>
 ): Component<T> | any => {
   if (isVue2) {
+    // TODO 可以删除
     return defineComponent({
       setup(props, { attrs, slots, listeners }: any) {
         return () => {

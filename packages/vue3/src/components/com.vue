@@ -34,8 +34,6 @@
 
 <script>
 import { createForm } from '@formily/core'
-// import { InputNumber, FormItem, Space } from '@formily/element'
-// import { Input, FormItem } from '@formily/element-plus'
 import { Input, FormItem } from '../plus/src'
 import { FormProvider, FormConsumer, Field } from '@formily/vue'
 
@@ -44,11 +42,14 @@ const form = createForm()
 export default {
     components: { FormProvider, FormConsumer, Field },
     data() {
-        return {
-            form,
-            Input,
-            FormItem,
-        }
+        this.form = form;
+        this.Input = Input;
+        this.FormItem = FormItem;
+        // return {
+        //     form,
+        //     Input,
+        //     FormItem,
+        // }
     },
 }
 </script>
