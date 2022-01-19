@@ -15,13 +15,13 @@
 import { FormProvider, createSchemaField, FormConsumer } from '@formily/vue'
 import { defineComponent, toRefs, reactive, ref } from 'vue'
 import { createForm } from '@formily/core'
-import { Input, FormItem, Password, Select } from '../plus/src'
+import * as PlusCom from '../plus/src'
 
 const { SchemaField } = createSchemaField({})
 
 export default defineComponent({
     name: 'SchemaPage',
-    components: { FormProvider, SchemaField, FormConsumer },
+    components: { FormProvider, SchemaField, FormConsumer, FormItem: PlusCom.FormItem },
     props: {
         SchemaConfig: {
             type: Object,
@@ -31,7 +31,7 @@ export default defineComponent({
     setup(props) {
         const form = createForm() //
         const { SchemaConfig } = toRefs(props)
-        const SchemaFieldComps = { Input, FormItem, Password, Select }
+        const SchemaFieldComps = PlusCom
         return {
             form, SchemaConfig, SchemaFieldComps
         }

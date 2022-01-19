@@ -1,8 +1,7 @@
 import type { Component } from 'vue'
-import  { h } from 'vue'
+import { h, defineComponent } from 'vue'
 import { merge } from '@formily/shared'
 // import { h } from '@formily/vue'
-import { isVue2, h as hInVue2, defineComponent } from 'vue-demi'
 
 type ListenersTransformRules = Record<string, string>
 
@@ -12,7 +11,7 @@ export const transformComponent = <T extends Record<string, any>>(
   transformRules?: ListenersTransformRules,
   defaultProps?: Partial<T>
 ): Component<T> | any => {
-  if (isVue2) {
+  if (false) {
     // TODO 可以删除
     return defineComponent({
       setup(props, { attrs, slots, listeners }: any) {
@@ -56,10 +55,17 @@ export const transformComponent = <T extends Record<string, any>>(
               data[`on${event[0].toUpperCase()}${event.slice(1)}`] =
                 attrs[`on${extract[0].toUpperCase()}${extract.slice(1)}`]
             })
+            data['onChange'] = () => {
+              setTimeout(() => {
+                console.log('onChange into', attrs);
+                attrs[`onChange`]
+              })
+            }
           }
           if (defaultProps) {
             data = merge(defaultProps, data)
           }
+          console.log('data', data);
           return h(tag, data, slots)
         }
       },

@@ -1,14 +1,14 @@
 import { isArr, isValid } from '@formily/shared'
-import { onMounted, Ref, ref } from 'vue-demi'
+import { onMounted, Ref, ref } from 'vue'
 import ResizeObserver from 'resize-observer-polyfill'
 
 interface IProps {
   breakpoints?: number[]
   layout?:
-    | 'vertical'
-    | 'horizontal'
-    | 'inline'
-    | ('vertical' | 'horizontal' | 'inline')[]
+  | 'vertical'
+  | 'horizontal'
+  | 'inline'
+  | ('vertical' | 'horizontal' | 'inline')[]
   labelCol?: number | number[]
   wrapperCol?: number | number[]
   labelAlign?: 'right' | 'left' | ('right' | 'left')[]

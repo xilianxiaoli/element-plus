@@ -11,7 +11,7 @@ import { resolveComponent } from '../__builtins__'
 
 export type SelectProps = (typeof ElSelectProps) & {
   options?: Array<typeof ElOptionProps>,
-} & {name:string}
+}
 
 // 删除了 defineComponent 的泛型声明
 const SelectOption = defineComponent({
@@ -28,7 +28,7 @@ const SelectOption = defineComponent({
                   if (typeof option === 'string') {
                     return h(
                       ElOption,
-                      { props: { value: option, label: option } }, // TODO props
+                      { props: { value: option, label: option } },
                       {
                         default: () => [
                           resolveComponent(slots?.option, { option }),
