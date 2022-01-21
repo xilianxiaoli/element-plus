@@ -1,5 +1,5 @@
-import { connect, mapProps, mapReadPretty } from '@formily/vue'
-import { defineComponent, PropType, h } from 'vue'
+import { connect, mapProps, mapReadPretty, h } from '@formily/vue'
+import { defineComponent, PropType, } from 'vue'
 import {
   composeExport,
   transformComponent,
@@ -47,7 +47,7 @@ const RadioGroupOption = defineComponent({
       type: String as PropType<RadioGroupProps['optionType']>,
       default: 'default',
     },
-  },
+  } as any, // TODO 泛型定义报错所以先用 any
   setup(customProps, { attrs, slots }) {
     return () => {
       const options = customProps.options || []

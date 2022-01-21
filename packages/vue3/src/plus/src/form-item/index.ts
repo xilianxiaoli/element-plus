@@ -6,9 +6,9 @@ import {
   onBeforeUnmount,
   watch,
   provide,
-   h,
+  h,
 } from 'vue'
-import { isVoidField } from '@formily/core'
+import { isVoidField, isField } from '@formily/core'
 import { connect, mapProps } from '@formily/vue'
 import { useFormLayout, FormLayoutShallowContext } from '../form-layout'
 import { composeExport, resolveComponent } from '../__builtins__/shared'
@@ -211,41 +211,41 @@ export const FormBaseItem = defineComponent({
       const formatChildren =
         feedbackLayout === 'popover'
           ? h(
-              'el-popover',
-              {
-                props: {
-                  disabled: !feedbackText,
-                  placement: 'top',
-                },
+            'el-popover',
+            {
+              props: {
+                disabled: !feedbackText,
+                placement: 'top',
               },
-              {
-                reference: () =>
-                  h('div', {}, { default: () => slots.default?.() }),
-                default: () => [
-                  h(
-                    'div',
-                    {
-                      class: {
-                        [`${prefixCls}-${feedbackStatus}-help`]:
-                          !!feedbackStatus,
-                        [`${prefixCls}-help`]: true,
-                      },
+            },
+            {
+              reference: () =>
+                h('div', {}, { default: () => slots.default?.() }),
+              default: () => [
+                h(
+                  'div',
+                  {
+                    class: {
+                      [`${prefixCls}-${feedbackStatus}-help`]:
+                        !!feedbackStatus,
+                      [`${prefixCls}-help`]: true,
                     },
-                    {
-                      default: () => [
-                        feedbackStatus &&
+                  },
+                  {
+                    default: () => [
+                      feedbackStatus &&
                         ['error', 'success', 'warning'].includes(feedbackStatus)
-                          ? ICON_MAP[
-                              feedbackStatus as 'error' | 'success' | 'warning'
-                            ]()
-                          : '',
-                        resolveComponent(feedbackText),
-                      ],
-                    }
-                  ),
-                ],
-              }
-            )
+                        ? ICON_MAP[
+                          feedbackStatus as 'error' | 'success' | 'warning'
+                        ]()
+                        : '',
+                      resolveComponent(feedbackText),
+                    ],
+                  }
+                ),
+              ],
+            }
+          )
           : slots.default?.()
 
       const renderLabelText = () => {
@@ -258,11 +258,11 @@ export const FormBaseItem = defineComponent({
           {
             default: () => [
               asterisk &&
-                h(
-                  'span',
-                  { class: `${prefixCls}-asterisk` },
-                  { default: () => ['*'] }
-                ),
+              h(
+                'span',
+                { class: `${prefixCls}-asterisk` },
+                { default: () => ['*'] }
+              ),
               h('label', {}, { default: () => [resolveComponent(label)] }),
             ],
           }
@@ -351,13 +351,13 @@ export const FormBaseItem = defineComponent({
               renderTooltipIcon(),
               // label colon
               label &&
-                h(
-                  'span',
-                  {
-                    class: `${prefixCls}-colon`,
-                  },
-                  { default: () => [colon ? ':' : ''] }
-                ),
+              h(
+                'span',
+                {
+                  class: `${prefixCls}-colon`,
+                },
+                { default: () => [colon ? ':' : ''] }
+              ),
             ],
           }
         )
@@ -398,13 +398,13 @@ export const FormBaseItem = defineComponent({
               {
                 default: () => [
                   addonBefore &&
-                    h(
-                      'div',
-                      { class: `${prefixCls}-addon-before` },
-                      {
-                        default: () => [resolveComponent(addonBefore)],
-                      }
-                    ),
+                  h(
+                    'div',
+                    { class: `${prefixCls}-addon-before` },
+                    {
+                      default: () => [resolveComponent(addonBefore)],
+                    }
+                  ),
                   h(
                     'div',
                     {
@@ -419,28 +419,28 @@ export const FormBaseItem = defineComponent({
                       default: () => [
                         formatChildren,
                         feedbackIcon &&
-                          h(
-                            'div',
-                            { class: `${prefixCls}-feedback-icon` },
-                            {
-                              default: () => [
-                                typeof feedbackIcon === 'string'
-                                  ? h('i', { class: feedbackIcon }, {})
-                                  : resolveComponent(feedbackIcon),
-                              ],
-                            }
-                          ),
+                        h(
+                          'div',
+                          { class: `${prefixCls}-feedback-icon` },
+                          {
+                            default: () => [
+                              typeof feedbackIcon === 'string'
+                                ? h('i', { class: feedbackIcon }, {})
+                                : resolveComponent(feedbackIcon),
+                            ],
+                          }
+                        ),
                       ],
                     }
                   ),
                   addonAfter &&
-                    h(
-                      'div',
-                      { class: `${prefixCls}-addon-after` },
-                      {
-                        default: () => [resolveComponent(addonAfter)],
-                      }
-                    ),
+                  h(
+                    'div',
+                    { class: `${prefixCls}-addon-after` },
+                    {
+                      default: () => [resolveComponent(addonAfter)],
+                    }
+                  ),
                 ],
               }
             ),
@@ -515,11 +515,13 @@ const Item = connect(
               : buf.concat([text])
           }, [])
         }
-        if (field.validating) return
-        if (props.feedbackText) return props.feedbackText
-        if (field.selfErrors.length) return split(field.selfErrors)
-        if (field.selfWarnings.length) return split(field.selfWarnings)
-        if (field.selfSuccesses.length) return split(field.selfSuccesses)
+        if (isField(field)) {
+          if (field.validating) return
+          if (props.feedbackText) return props.feedbackText
+          if (field.selfErrors.length) return split(field.selfErrors)
+          if (field.selfWarnings.length) return split(field.selfWarnings)
+          if (field.selfSuccesses.length) return split(field.selfSuccesses)
+        }
       }
       const errorMessages = takeMessage()
       return {
@@ -532,13 +534,15 @@ const Item = connect(
     (props, field) => {
       if (isVoidField(field)) return props
       if (!field) return props
-      return {
-        feedbackStatus:
-          field.validateStatus === 'validating'
-            ? 'pending'
-            : (Array.isArray(field.decorator) &&
+      if (isField(field)) {
+        return {
+          feedbackStatus:
+            field.validateStatus === 'validating'
+              ? 'pending'
+              : (Array.isArray(field.decorator) &&
                 field.decorator[1]?.feedbackStatus) ||
               field.validateStatus,
+        }
       }
     },
     (props, field) => {
@@ -546,7 +550,7 @@ const Item = connect(
 
       if (!field) return props
       let asterisk = false
-      if (field.required && field.pattern !== 'readPretty') {
+      if (isField(field) && field.required && field.pattern !== 'readPretty') {
         asterisk = true
       }
       if ('asterisk' in props) {

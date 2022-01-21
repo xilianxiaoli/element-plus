@@ -55,17 +55,17 @@ export const transformComponent = <T extends Record<string, any>>(
               data[`on${event[0].toUpperCase()}${event.slice(1)}`] =
                 attrs[`on${extract[0].toUpperCase()}${extract.slice(1)}`]
             })
-            data['onChange'] = () => {
-              setTimeout(() => {
-                console.log('onChange into', attrs);
-                attrs[`onChange`]
-              })
-            }
+            // data['onChange'] = () => {
+            //   setTimeout(() => {
+            //     console.log('onChange into', attrs);
+            //     attrs[`onChange`]
+            //   })
+            // }
           }
           if (defaultProps) {
             data = merge(defaultProps, data)
           }
-          console.log('data', data);
+          console.log('data', tag, data);
           return h(tag, data, slots)
         }
       },
