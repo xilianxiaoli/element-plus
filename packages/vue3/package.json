@@ -6,15 +6,15 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@formily/reactive": "2.0.6",
+    "@formily/reactive": "2.0.9",
     "element-plus": "*",
     "resize-observer-polyfill": "^1.5.1",
     "vue": "3.2.24",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
-    "@formily/core": "2.0.6",
-    "@formily/vue": "2.0.6",
+    "@formily/core": "2.0.9",
+    "@formily/vue": "2.0.9",
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",

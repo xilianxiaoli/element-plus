@@ -1,5 +1,5 @@
 <template>
-  <!-- <EleCom></EleCom> -->
+  <Acom @change="ff"></Acom>
   基础组件
   <div v-for="(config, index) in configList" :key="index">
     <h3>{{ config.title }}</h3>
@@ -13,6 +13,8 @@ import com from '../components/com.vue'
 import SchemaPage from '../components/schemaPage.vue'
 import EleCom from '../components/eleCom.vue'
 import { ElButton } from 'element-plus'
+import { aa } from '../components/test.js'
+import Acom from '../components/A.vue'
 const Input = {
     type: 'Object',
     title: 'Input',
@@ -390,53 +392,54 @@ const Upload = {
             },
             required: true,
         },
-        // card: {
-        //     type: 'array',
-        //     title: '卡片上传',
-        //     'x-decorator': 'FormItem',
-        //     'x-component': 'Upload',
-        //     'x-component-props': {
-        //         listType: 'picture-card',
-        //         action: 'https://formily-vue.free.beeceptor.com/file',
-        //     },
-        //     required: true,
-        // },
-        // drag: {
-        //     type: 'array',
-        //     title: '拖拽上传',
-        //     'x-decorator': 'FormItem',
-        //     'x-component': 'Upload',
-        //     'x-component-props': {
-        //         action: 'https://formily-vue.free.beeceptor.com/file',
-        //         textContent: '将文件拖到此处，或者点击上传',
-        //         drag: true,
-        //     },
-        //     required: true,
-        // },
-        // custom: {
-        //     type: 'array',
-        //     title: '自定义按钮',
-        //     'x-decorator': 'FormItem',
-        //     'x-component': 'Upload',
-        //     'x-component-props': {
-        //         action: 'https://formily-vue.free.beeceptor.com/file',
-        //     },
-        //     'x-content': UploadButton,
-        //     required: true,
-        // },
+        card: {
+            type: 'array',
+            title: '卡片上传',
+            'x-decorator': 'FormItem',
+            'x-component': 'Upload',
+            'x-component-props': {
+                listType: 'picture-card',
+                action: 'https://formily-vue.free.beeceptor.com/file',
+            },
+            required: true,
+        },
+        drag: {
+            type: 'array',
+            title: '拖拽上传',
+            'x-decorator': 'FormItem',
+            'x-component': 'Upload',
+            'x-component-props': {
+                action: 'https://formily-vue.free.beeceptor.com/file',
+                textContent: '将文件拖到此处，或者点击上传',
+                drag: true,
+            },
+            required: true,
+        },
+        custom: {
+            type: 'array',
+            title: '自定义按钮',
+            'x-decorator': 'FormItem',
+            'x-component': 'Upload',
+            'x-component-props': {
+                action: 'https://formily-vue.free.beeceptor.com/file',
+            },
+            'x-content': UploadButton,
+            required: true,
+        },
     },
 }
 
 
-const configList = [Upload]
+const configList = [] // Upload,
 
 
 export default defineComponent({
-    components: { com, SchemaPage, EleCom },
+    components: { com, SchemaPage, EleCom, Acom, aa },
 
     setup(props) {
+        const ff = () => { console.log('into base ff'); }
         return {
-            configList
+            configList, ff
         }
     }
 })

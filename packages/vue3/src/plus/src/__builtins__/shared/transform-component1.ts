@@ -25,7 +25,6 @@ export const transformComponent = <T extends Record<string, any>>(
         if (defaultProps) {
           data = merge(defaultProps, attrs)
         }
-        console.log('data:', data)
         return h(tag, data, slots)
       }
     },

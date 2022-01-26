@@ -6,10 +6,9 @@ import {
   onBeforeUnmount,
   watch,
   provide,
-  h,
 } from 'vue'
 import { isVoidField, isField } from '@formily/core'
-import { connect, mapProps } from '@formily/vue'
+import { connect, mapProps, h } from '@formily/vue'
 import { useFormLayout, FormLayoutShallowContext } from '../form-layout'
 import { composeExport, resolveComponent } from '../__builtins__/shared'
 import { stylePrefix } from '../__builtins__/configs'

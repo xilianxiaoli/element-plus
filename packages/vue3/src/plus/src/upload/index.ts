@@ -13,6 +13,7 @@ import { ElUpload, ElButton } from 'element-plus'
 export interface IUploadProps {
   errorAdaptor?: (error?: ErrorEvent) => String
   textContent?: String,
+  onChange?: (file: UploadFile, fileList: UploadFile[]) => void,
 }
 // <UploadProps>
 const UploadWrapper = defineComponent<IUploadProps>({
@@ -28,6 +29,10 @@ const UploadWrapper = defineComponent<IUploadProps>({
         return error?.message || ''
       },
     },
+    onChange: {
+      type: Function,
+      default: () => { }
+    }
   } as any,
   // ts类型校验报错，临时使用 any 
   setup(curProps, { slots, attrs, emit }) {
@@ -45,22 +50,19 @@ const UploadWrapper = defineComponent<IUploadProps>({
 
       const props = {
         ...attrs,
-        // TODO onChange 变成了数组
+        // onChange 变成了数组； vue3 下相同的attrs props在组件中会合并成数组 
         onChange(
           file: UploadFile,
           fileList: UploadFile[]
         ) {
-          console.log('into onChange');
-          ; (attrs.onChange as Function)?.(file, fileList)
           setFeedBack()
-          // emit('change', fileList)
+          emit('change', fileList)
         },
 
         onRemove(
           file: UploadFile,
           fileList: UploadFile[]
         ) {
-          ; (attrs.onRemove as Function)?.(file, fileList)
           setFeedBack()
           emit('change', fileList)
         },
@@ -70,8 +72,6 @@ const UploadWrapper = defineComponent<IUploadProps>({
           file: UploadFile,
           fileList: UploadFile[]
         ) {
-          ; (attrs.onError as Function)?.(error, file, fileList)
-
           setTimeout(() => {
             setFeedBack(error)
           }, 0)
@@ -119,7 +119,6 @@ const UploadWrapper = defineComponent<IUploadProps>({
           )
         }
       }
-      console.log(props);
       return h(ElUpload, { ...props }, children)
     }
   },
