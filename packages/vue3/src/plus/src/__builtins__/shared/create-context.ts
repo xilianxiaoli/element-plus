@@ -16,10 +16,9 @@ export type CreateContext<T> = {
   Consumer: Component
   injectKey: InjectionKey<Ref<T>>
 }
-
+// 生产和消费组件
 export const createContext = <T>(defaultValue?: T): CreateContext<T> => {
   const injectKey: InjectionKey<Ref<T>> = Symbol()
-
   return {
     Provider: defineComponent({
       name: 'ContextProvider',
@@ -30,21 +29,14 @@ export const createContext = <T>(defaultValue?: T): CreateContext<T> => {
             return defaultValue ?? null
           },
         },
-      } as {value:{}} , // TODO 不得以加上 as 
+      } as { value: {} }, // TODO 不得以加上 as 
       setup(props, { slots }) {
         const value = toRef(props, 'value')
-        // const {value} = toRefs(props)
-        const state = reactive({
-          foo: 1,
-          bar: 2,
-        })
-        
-        const fooRef = toRef(state, 'foo')
         provide(injectKey, readonly(value))
 
         return () => slots?.default?.()
       },
-    }) as any ,
+    }) as any,
 
     Consumer: defineComponent({
       name: 'ContextConsumer',
@@ -53,7 +45,7 @@ export const createContext = <T>(defaultValue?: T): CreateContext<T> => {
 
         return () => slots?.default?.(value)
       },
-    }) as any ,
+    }) as any,
     injectKey,
   }
 }

@@ -1,14 +1,14 @@
 <template>
-  <Acom @change="ff"></Acom>
+  <!-- <Acom @change="ff"></Acom> -->
   基础组件
   <div v-for="(config, index) in configList" :key="index">
     <h3>{{ config.title }}</h3>
-    <SchemaPage :SchemaConfig="config"></SchemaPage>
+    <SchemaPage :SchemaConfig="config" :formOptions="config.opt"></SchemaPage>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, provide } from 'vue'
 import com from '../components/com.vue'
 import SchemaPage from '../components/schemaPage.vue'
 import EleCom from '../components/eleCom.vue'
@@ -49,6 +49,9 @@ const Input = {
         //     },
         //     'x-decorator': 'FormItem'
         // }
+    },
+    opt: {
+        pattern: 'readPretty'
     }
 }
 
@@ -111,6 +114,9 @@ const Select = {
             },
             'x-decorator': 'FormItem'
         }
+    },
+    opt: {
+        pattern: 'readPretty'
     }
 }
 
@@ -430,14 +436,20 @@ const Upload = {
 }
 
 
-const configList = [] // Upload,
-
+const configList = [Select] // Upload,
 
 export default defineComponent({
     components: { com, SchemaPage, EleCom, Acom, aa },
 
     setup(props) {
         const ff = () => { console.log('into base ff'); }
+        provide('init', {
+            // plan: { title: 'init-xiaoli' }
+            plan: {
+                title: 1,
+                title1: [1, 2]
+            }
+        })
         return {
             configList, ff
         }

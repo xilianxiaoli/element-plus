@@ -1,6 +1,6 @@
 import { connect, mapProps, h, mapReadPretty } from '@formily/vue'
 import { defineComponent } from 'vue'
-// import { PreviewText } from '../preview-text'
+import { PreviewText } from '../preview-text'
 
 import type {
   ElSelect as ElSelectProps,
@@ -23,37 +23,37 @@ const SelectOption = defineComponent({
       const children =
         options.length !== 0
           ? {
-              default: () =>
-                options.map((option) => {
-                  if (typeof option === 'string') {
-                    return h(
-                      ElOption,
-                      { props: { value: option, label: option } },
-                      {
-                        default: () => [
-                          resolveComponent(slots?.option, { option }),
-                        ],
-                      }
-                    )
-                  } else {
-                    return h(
-                      ElOption,
-                      {
-                        props: {
-                          ...option,
-                        },
+            default: () =>
+              options.map((option) => {
+                if (typeof option === 'string') {
+                  return h(
+                    ElOption,
+                    { props: { value: option, label: option } },
+                    {
+                      default: () => [
+                        resolveComponent(slots?.option, { option }),
+                      ],
+                    }
+                  )
+                } else {
+                  return h(
+                    ElOption,
+                    {
+                      props: {
+                        ...option,
                       },
-                      {
-                        default: () => [
-                          resolveComponent(slots?.option, {
-                            option,
-                          }),
-                        ],
-                      }
-                    )
-                  }
-                }),
-            }
+                    },
+                    {
+                      default: () => [
+                        resolveComponent(slots?.option, {
+                          option,
+                        }),
+                      ],
+                    }
+                  )
+                }
+              }),
+          }
           : slots
       return h(
         ElSelect,
@@ -68,8 +68,8 @@ const SelectOption = defineComponent({
 
 export const Select = connect(
   SelectOption,
-  mapProps({ dataSource: 'options', loading: true },{value:'modelValue'}),
-  // mapReadPretty(PreviewText.Select)
+  mapProps({ dataSource: 'options', loading: true }, { value: 'modelValue' }),
+  mapReadPretty(PreviewText.Select)
 )
-
+console.log(Select);
 export default Select

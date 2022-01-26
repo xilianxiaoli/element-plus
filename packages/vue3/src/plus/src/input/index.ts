@@ -1,6 +1,6 @@
 import { composeExport, transformComponent } from '../__builtins__/shared'
 import { connect, mapProps, mapReadPretty } from '@formily/vue'
-// import { PreviewText } from '../preview-text'
+import { PreviewText } from '../preview-text'
 import type { InputProps as ElInputProps } from 'element-plus'
 import { ElInput } from 'element-plus'
 
@@ -12,8 +12,8 @@ const TransformElInput = transformComponent<InputProps>(ElInput, {
 
 const InnerInput = connect(
   TransformElInput,
-  mapProps({ readOnly: 'readonly' },{value:'modelValue'}),
-  // mapReadPretty(PreviewText.Input)
+  mapProps({ readOnly: 'readonly' }, { value: 'modelValue' }),
+  mapReadPretty(PreviewText.Input)
 )
 
 const TextArea = connect(
@@ -24,7 +24,7 @@ const TextArea = connect(
       type: 'textarea',
     }
   }),
-  // mapReadPretty(PreviewText.Input)
+  mapReadPretty(PreviewText.Input)
 )
 
 export const Input = composeExport(InnerInput, {

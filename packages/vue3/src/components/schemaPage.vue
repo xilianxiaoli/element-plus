@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { FormProvider, createSchemaField, FormConsumer } from '@formily/vue'
-import { defineComponent, toRefs, reactive, ref } from 'vue'
+import { defineComponent, toRefs, reactive, ref, inject } from 'vue'
 import { createForm } from '@formily/core'
 import * as PlusCom from '../plus/src'
 
@@ -26,10 +26,19 @@ export default defineComponent({
         SchemaConfig: {
             type: Object,
             default: () => { }
+        },
+        formOptions: {
+            type: Object,
+            default: () => { }
         }
     },
     setup(props) {
-        const form = createForm() //
+        const { formOptions = {} } = props;
+        const form = createForm(formOptions)
+        const initData = inject('init')
+        if (initData) {
+            form.setInitialValues(initData)
+        }
         const { SchemaConfig } = toRefs(props)
         const SchemaFieldComps = PlusCom
         return {
