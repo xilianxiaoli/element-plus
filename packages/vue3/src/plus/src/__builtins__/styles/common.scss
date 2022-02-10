@@ -1,15 +1,16 @@
 $formily-prefix: 'formily-element';
 $namespace: 'el';
-// @import '~element-plus/packages/theme-chalk/src/common/var.scss';
+
+@import '~element-plus/theme-chalk/src/common/var.scss';
 
 @mixin active {
-  border-color: $--color-primary;
-  outline: 0;
-  border-right-width: $--border-width-base !important;
+    border-color: --el-color-primary;
+    border-right-width: $border-width-base !important;
+    outline: 0;
 }
 
 @mixin hover {
-  border-color: $--border-color-hover;
-  outline: 0;
-  border-right-width: $--border-width-base !important;
+    border-color: $border-color-hover;
+    border-right-width: $border-width-base !important;
+    outline: 0;
 }

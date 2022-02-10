@@ -66,7 +66,7 @@
 }
 
 .#{$form-item-prefix}-label label {
-  color: $--color-text-regular;
+  color: --el-text-color-regular;
 }
 
 .#{$form-item-prefix}-label-align-left {
@@ -152,7 +152,7 @@
 }
 
 .#{$form-item-prefix}-size-small {
-  font-size: $--font-size-extra-small;
+  font-size: --el-font-size-extra-small;
 
   .#{$form-item-prefix}-label * {
     line-height: $--form-item-small-line-height;
@@ -196,7 +196,7 @@
       .#{$namespace}-input-number__decrease {
         line-height: math.div($--form-item-small-line-height, 2);
         height: math.div($--form-item-small-line-height, 2);
-        font-size: $--font-size-extra-small;
+        font-size: --el-font-size-extra-small;
         box-sizing: border-box;
       }
     }
@@ -204,7 +204,7 @@
 }
 
 .#{$form-item-prefix}-size-large {
-  font-size: $--font-size-medium;
+  font-size: --el-font-size-medium;
 
   .#{$form-item-prefix}-label * {
     line-height: $--form-item-large-line-height;
@@ -255,7 +255,7 @@
       .#{$namespace}-input-number__increase,
       .#{$namespace}-input-number__decrease {
         line-height: math.div($--form-item-large-line-height, 2) - 1;
-        font-size: $--font-size-medium;
+        font-size: --el-font-size-medium;
       }
     }
   }
@@ -281,7 +281,7 @@
 
 .#{$form-item-prefix}-label-tooltip {
   margin-left: 4px;
-  color: $--color-text-secondary;
+  color: --el-text-color-secondary;
   display: flex;
   align-items: center;
   height: $--form-item-medium-line-height;
@@ -310,7 +310,7 @@
 }
 
 .#{$form-item-prefix}-asterisk {
-  color: $--color-danger;
+  color: --el-color-danger;
   margin-right: 4px;
   display: inline-block;
   font-family: SimSun, sans-serif;
@@ -326,8 +326,8 @@
   clear: both;
   min-height: $--form-error-line-height;
   line-height: $--form-error-line-height;
-  color: $--color-text-secondary;
-  transition: $--color-transition-base;
+  color: --el-color-text-secondary;
+  transition: --el-color-transition-base;
   padding-top: 0;
 }
 
@@ -344,10 +344,10 @@
 }
 
 .#{$form-item-prefix}-control-content-component-has-feedback-icon {
-  border-radius: $--border-radius-base;
-  border: $--border-base;
+  border-radius: --el-border-radius-base;
+  border: $border-base;
   padding-right: 8px;
-  transition: $--all-transition;
+  transition: --el-transition-all;
   touch-action: manipulation;
   outline: none;
 
@@ -365,13 +365,13 @@
     .#{$namespace}-input-number__increase {
     top: 0;
     right: 8px;
-    border-right: $--border-base;
+    border-right: $border-base;
   }
   .#{$namespace}-input-number.is-controls-right
     .#{$namespace}-input-number__decrease {
     bottom: 0;
     right: 8px;
-    border-right: $--border-base;
+    border-right: $border-base;
   }
 }
 
@@ -394,14 +394,14 @@
   & .#{$namespace}-textarea__inner {
     &,
     &.hover {
-      border-color: $--color-danger;
+      border-color: --el-color-danger;
     }
   }
 
   & .#{$namespace}-input__inner,
   & .#{$namespace}-textarea__inner {
     &:focus {
-      border-color: $--color-danger;
+      border-color: --el-color-danger;
     }
   }
 
@@ -412,7 +412,7 @@
     }
   }
   .#{$namespace}-input__validateIcon {
-    color: $--color-danger !important;
+    color: --el-color-danger !important;
   }
 }
 
@@ -425,15 +425,15 @@
 }
 
 .#{$form-item-prefix}-error-help {
-  color: $--color-danger;
+  color: --el-color-danger;
 }
 
 .#{$form-item-prefix}-warning-help {
-  color: $--color-warning;
+  color: --el-color-warning;
 }
 
 .#{$form-item-prefix}-success-help {
-  color: $--color-success;
+  color: --el-color-success;
 }
 
 .#{$form-item-prefix}-warning {
@@ -441,14 +441,14 @@
   & .#{$namespace}-textarea__inner {
     &,
     &.hover {
-      border-color: $--color-warning;
+      border-color: --el-color-warning;
     }
   }
 
   & .#{$namespace}-input__inner,
   & .#{$namespace}-textarea__inner {
     &:focus {
-      border-color: $--color-warning;
+      border-color: --el-color-warning;
     }
   }
 
@@ -459,7 +459,7 @@
     }
   }
   .#{$namespace}-input__validateIcon {
-    color: $--color-warning !important;
+    color: --el-color-warning !important;
   }
 }
 
@@ -468,14 +468,14 @@
   & .#{$namespace}-textarea__inner {
     &,
     &.hover {
-      border-color: $--color-success;
+      border-color: --el-color-success;
     }
   }
 
   & .#{$namespace}-input__inner,
   & .#{$namespace}-textarea__inner {
     &:focus {
-      border-color: $--color-success;
+      border-color: --el-color-success;
     }
   }
 
@@ -486,7 +486,7 @@
     }
   }
   .#{$namespace}-input__validateIcon {
-    color: $--color-success !important;
+    color: --el-color-success !important;
   }
 }
 
@@ -503,8 +503,8 @@
 }
 
 .#{$form-item-prefix}-inset {
-  border-radius: $--border-radius-base;
-  border: $--border-base;
+  border-radius: --el-border-radius-base;
+  border: $border-base;
   padding-left: 12px;
   transition: 0.3s all;
 
