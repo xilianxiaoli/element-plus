@@ -6,7 +6,7 @@ import {
   resolveComponent,
   SlotTypes,
 } from '../__builtins__/shared'
-// import { PreviewText } from '../preview-text'
+import { PreviewText } from '../preview-text'
 import type {
   ElRadio as ElRadioProps,
   ElRadioGroup as ElRadioGroupProps,
@@ -104,7 +104,7 @@ const RadioGroupOption = defineComponent({
 const RadioGroup = connect(
   RadioGroupOption,
   mapProps({ dataSource: 'options' }, { value: 'modelValue' }),
-  // mapReadPretty(PreviewText.Select)
+  mapReadPretty(PreviewText.Select)
 )
 export const Radio = composeExport(ElRadio, {
   Group: RadioGroup,

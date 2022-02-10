@@ -15,7 +15,7 @@ import {
   ElCheckboxGroup,
   ElCheckboxButton,
 } from 'element-plus'
-// import { PreviewText } from '../preview-text'
+import { PreviewText } from '../preview-text'
 
 type ElCheckboxProps = Omit<typeof _ElCheckboxProps, 'value'> & {
   value: ElCheckboxProps['label']
@@ -166,9 +166,9 @@ const CheckboxGroupOption = defineComponent({
 const CheckboxGroup = connect(
   CheckboxGroupOption,
   mapProps({ dataSource: 'options', value: 'modelValue' }),
-  // mapReadPretty(PreviewText.Select, {
-  //   multiple: true,
-  // })
+  mapReadPretty(PreviewText.Select, {
+    multiple: true,
+  })
 )
 
 export const Checkbox = composeExport(connect(CheckboxOption), {

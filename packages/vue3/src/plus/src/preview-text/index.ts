@@ -221,13 +221,11 @@ const DatePicker = defineComponent({
       if (isArr(props.value)) {
         const labels = (props.value as any[]).map(
           (value: string | Date) =>
-            // formatDate(value, props.format) || placeholder.value
             dayjs(value).format(props.format) || placeholder.value
         )
 
         return labels.join('~')
       } else {
-        // return formatDate(props.value, props.format) || placeholder.value
         return dayjs(props.value).format(props.format) || placeholder.value
       }
     }

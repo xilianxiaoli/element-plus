@@ -35,11 +35,10 @@ export default defineComponent({
     setup(props) {
         const { formOptions = {} } = props;
         const form = createForm(formOptions)
-        const initData = inject('init')
-        if (initData) {
-            form.setInitialValues(initData)
-        }
         const { SchemaConfig } = toRefs(props)
+        if (SchemaConfig.value.initData) {
+            form.setInitialValues(SchemaConfig.value.initData)
+        }
         const SchemaFieldComps = PlusCom
         return {
             form, SchemaConfig, SchemaFieldComps

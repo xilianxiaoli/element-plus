@@ -3,7 +3,7 @@ import { connect, mapProps, mapReadPretty } from '@formily/vue'
 
 import type { ElDatePicker as ElDatePickerProps } from 'element-plus'
 import { ElDatePicker } from 'element-plus'
-// import { PreviewText } from '../preview-text'
+import { PreviewText } from '../preview-text'
 
 export type DatePickerProps = typeof ElDatePickerProps
 
@@ -29,17 +29,16 @@ const getDefaultFormat = (props, formatType = 'format') => {
 
   return 'YYYY-MM-DD'
 }
-
 export const DatePicker = connect(
   TransformElDatePicker,
-  mapProps({ readOnly: 'readonly' },{value:'modelValue'}, (props) => {
+  mapProps({ readOnly: 'readonly' }, { value: 'modelValue' }, (props) => {
     return {
       ...props,
       format: props.format || getDefaultFormat(props),
       valueFormat: props.valueFormat || getDefaultFormat(props, 'valueFormat'),
     }
   }),
-  // mapReadPretty(PreviewText.DatePicker)
+  mapReadPretty(PreviewText.DatePicker, { format: 'YYYY-MM-DD' })
 )
 
 export default DatePicker

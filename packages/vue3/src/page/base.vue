@@ -52,6 +52,11 @@ const Input = {
     },
     opt: {
         pattern: 'readPretty'
+    },
+    initData: {
+        plan: {
+            title: '初始化数据'
+        }
     }
 }
 
@@ -117,6 +122,12 @@ const Select = {
     },
     opt: {
         pattern: 'readPretty'
+    },
+    initData: {
+        plan: {
+            title: 1,
+            title1: [1, 2]
+        }
     }
 }
 
@@ -129,7 +140,7 @@ const DatePicker = {
             title: '日期选择',
             'x-component': 'DatePicker',
             'x-component-props': {
-
+                format: 'YYYY'
             },
             'x-decorator': 'FormItem'
         },
@@ -142,6 +153,13 @@ const DatePicker = {
             },
             'x-decorator': 'FormItem'
         }
+    },
+    opt: {
+        pattern: 'readPretty'
+    },
+    initData: {
+        time: '2020-02-02 12:02:02',
+        daterange: ['2020-02-02 12:02:02', '2020-02-05 12:02:02']
     }
 }
 
@@ -167,6 +185,13 @@ const TimePicker = {
             'x-component-props': {},
             'x-decorator': 'FormItem'
         }
+    },
+    opt: {
+        pattern: 'readPretty'
+    },
+    initData: {
+        time: '2020-02-02 12:02:02',
+        timeDis: '2020-02-02 11:05:32'
     }
 }
 
@@ -192,6 +217,12 @@ const InputNumber = {
         //     'x-component-props': {},
         //     'x-decorator': 'FormItem'
         // }
+    },
+    opt: {
+        pattern: 'readPretty'
+    },
+    initData: {
+        num: '99',
     }
 }
 
@@ -321,6 +352,12 @@ const Radio = {
             },
         },
     },
+    opt: {
+        pattern: 'readPretty'
+    },
+    initData: {
+        radio: 1,
+    }
 }
 
 const Checkbox = {
@@ -349,6 +386,13 @@ const Checkbox = {
             ],
         },
     },
+    opt: {
+        pattern: 'readPretty'
+    },
+    initData: {
+        checkbox: true,
+        checkboxGroup: [1],
+    }
 }
 
 const Switch = {
@@ -361,6 +405,12 @@ const Switch = {
             'x-component': 'Switch',
         },
     },
+    opt: {
+        pattern: 'readPretty'
+    },
+    initData: {
+        switch: true,
+    }
 }
 
 const Transfer = {
@@ -377,6 +427,9 @@ const Transfer = {
             'x-component': 'Transfer',
         },
     },
+    initData: {
+        transfer: [1],
+    }
 }
 
 const UploadButton = {
@@ -433,23 +486,17 @@ const Upload = {
             required: true,
         },
     },
+    initData: { "base": [{ "name": "1474.png", "percentage": 100, "status": "success", "size": 60274, "raw": { "uid": 1644479528825 }, "uid": 1644479528825 }] }
 }
 
 
-const configList = [Select] // Upload,
+const configList = [Upload] // Upload,
 
 export default defineComponent({
     components: { com, SchemaPage, EleCom, Acom, aa },
 
     setup(props) {
         const ff = () => { console.log('into base ff'); }
-        provide('init', {
-            // plan: { title: 'init-xiaoli' }
-            plan: {
-                title: 1,
-                title1: [1, 2]
-            }
-        })
         return {
             configList, ff
         }
