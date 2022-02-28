@@ -1,4 +1,4 @@
-import { defineComponent, onBeforeUnmount,h } from 'vue'
+import { defineComponent, onBeforeUnmount, h } from 'vue'
 import { Fragment } from '@formily/vue'
 export interface IPortalProps {
   id?: string | symbol
@@ -19,7 +19,7 @@ export const createPortalProvider = (id: string | symbol) => {
     setup(props) {
       onBeforeUnmount(() => {
         const { id } = props
-        if (id && PortalMap.has(id as string )) {
+        if (id && PortalMap.has(id as string)) {
           PortalMap.delete(id as string)
         }
       })
@@ -37,7 +37,6 @@ export const createPortalProvider = (id: string | symbol) => {
 
   return Portal
 }
-
-export function getProtalContext(id: string | symbol) {
+export function getPortalContext(id: string | symbol) {
   return PortalMap.get(id)
 }

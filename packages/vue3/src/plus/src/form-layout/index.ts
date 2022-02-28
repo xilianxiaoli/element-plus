@@ -6,7 +6,8 @@ import {
   Ref,
   ref,
   watch,
-  h
+  h,
+  unref
 } from 'vue'
 // import { h } from '@formily/vue'
 import { stylePrefix } from '../__builtins__/configs'
@@ -26,10 +27,10 @@ export type FormLayoutProps = {
   fullness?: boolean
   size?: 'small' | 'default' | 'large'
   layout?:
-    | 'vertical'
-    | 'horizontal'
-    | 'inline'
-    | ('vertical' | 'horizontal' | 'inline')[]
+  | 'vertical'
+  | 'horizontal'
+  | 'inline'
+  | ('vertical' | 'horizontal' | 'inline')[]
   direction?: 'rtl' | 'ltr'
   shallow?: boolean
   feedbackLayout?: 'loose' | 'terse' | 'popover'
@@ -108,11 +109,11 @@ export const FormLayout = defineComponent({
   // 没有 refs
   setup(customProps, { slots }) {
     const root = ref(null)
-    const { props } = useResponsiveFormLayout(customProps as any , root)
+    const { props } = useResponsiveFormLayout(customProps as any, root)
 
     const deepLayout = useFormDeepLayout()
     const newDeepLayout = ref({
-      ...deepLayout,
+      ...deepLayout.value,
     })
     const shallowProps = ref({})
 

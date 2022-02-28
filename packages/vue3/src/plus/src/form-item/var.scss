@@ -1,6 +1,6 @@
 $form-item-prefix: '#{$formily-prefix}-form-item';
 
-$--form-font-size: --el-font-size-base !default;
+$--form-font-size: $--font-size-base !default;
 
 $--form-label-font-size: $--form-font-size !default;
 
