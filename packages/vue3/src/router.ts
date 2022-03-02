@@ -7,6 +7,7 @@ export const routes: VueRouter.RouteRecordRaw[] = [
     { path: '/FormDialog', name: 'FormDialog', component: () => import('./components/FormDialog.vue'), meta: { title: 'FormDialog' } },
     { path: '/FormDrawer', name: 'FormDrawer', component: () => import('./components/FormDrawer.vue'), meta: { title: 'FormDrawer' } },
     { path: '/FormGrid', name: 'FormGrid', component: () => import('./components/FormGrid.vue'), meta: { title: 'FormGrid' } },
+    { path: '/ArrayCards', name: 'ArrayCards', component: () => import('./components/ArrayCards.vue'), meta: { title: 'ArrayCards' } },
 ];
 
 const router: VueRouter.Router = VueRouter.createRouter({

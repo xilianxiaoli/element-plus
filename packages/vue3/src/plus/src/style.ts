@@ -1,8 +1,8 @@
 // auto generated code
-// import './array-base/style.scss'
-// import './array-cards/style.scss'
+import './array-base/style.scss'
+import './array-cards/style.scss'
 // import './array-collapse/style.scss'
-// import './array-items/style.scss'
+import './array-items/style.scss'
 // import './array-table/style.scss'
 // import './array-tabs/style.scss'
 // import './editable/style.scss'

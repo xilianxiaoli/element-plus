@@ -12,7 +12,8 @@
     "element-plus": "^2.0.3",
     "resize-observer-polyfill": "^1.5.1",
     "vue": "3.2.24",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "vue-slicksort": "^2.0.0-alpha.5"
   },
   "devDependencies": {
     "@formily/core": "2.0.9",

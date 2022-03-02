@@ -22,6 +22,12 @@ $--color-success: var(--el-color-success);
 $--border-radius-base: var(--el-border-radius-base);
 $--font-size-base: var(--el-font-size-base);
 $--dialog-padding-primary: var(--el-dialog-padding-primary);
+$--border-width-base: $border-width-base;
+$--all-transition: var(--el-transition-all);
+$--border-color-base: var(--el-border-color-base);
+$--color-white: var(--el-color-white);
+$--border-color-hover: var(--el-border-color-hover);
+$--card-border-color: var(--el-card-border-color);
 
 @mixin active {
   border-color: --el-color-primary;

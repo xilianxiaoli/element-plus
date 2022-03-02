@@ -34,41 +34,41 @@
     </SchemaField>
     <FormButtonGroup alignFormItem>
       <Submit>提交</Submit>
+      <Reset>重置</Reset>
     </FormButtonGroup>
   </Form>
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, reactive, ref, inject } from 'vue'
+import { defineComponent, toRefs, reactive, ref, inject } from "vue";
 
-import { createForm } from '@formily/core'
-import { createSchemaField } from '@formily/vue'
+import { createForm } from "@formily/core";
+import { createSchemaField } from "@formily/vue";
 import {
-    Form,
-    Input,
-    Select,
-    FormItem,
-    FormButtonGroup,
-    Submit,
-} from '../plus/src'
+  Form,
+  Input,
+  Select,
+  FormItem,
+  FormButtonGroup,
+  Submit,
+  Reset,
+} from "../plus/src";
 
-
-const form = createForm()
-const fields = createSchemaField({ components: { Input, Select, FormItem } })
+const form = createForm();
+const fields = createSchemaField({ components: { Input, Select, FormItem } });
 
 export default defineComponent({
+  components: { FormButtonGroup, Submit, Form, Reset, ...fields },
+  data() {
+    return {
+      form,
+    };
+  },
 
-    components: { FormButtonGroup, Submit, Form, ...fields },
-    data() {
-        return {
-            form,
-        }
+  methods: {
+    log(value) {
+      console.log(value);
     },
-
-    methods: {
-        log(value) {
-            console.log(value)
-        },
-    },
-})
+  },
+});
 </script>
