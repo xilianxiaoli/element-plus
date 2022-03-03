@@ -156,7 +156,7 @@ const ArrayBaseInner = defineComponent({
       keyMap: (props as IArrayBaseProps).keyMap,
     })
     return () => {
-      return h(Fragment, {}, slots)
+      return h('div', {}, slots)
     }
   },
 })
