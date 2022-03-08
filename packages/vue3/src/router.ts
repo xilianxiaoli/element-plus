@@ -9,6 +9,9 @@ export const routes: VueRouter.RouteRecordRaw[] = [
     { path: '/FormGrid', name: 'FormGrid', component: () => import('./components/FormGrid.vue'), meta: { title: 'FormGrid' } },
     { path: '/ArrayCards', name: 'ArrayCards', component: () => import('./components/ArrayCards.vue'), meta: { title: 'ArrayCards' } },
     { path: '/ArrayCollapse', name: 'ArrayCollapse', component: () => import('./components/ArrayCollapse.vue'), meta: { title: 'ArrayCollapse' } },
+    { path: '/ArrayTable', name: 'ArrayTable', component: () => import('./components/ArrayTable.vue'), meta: { title: 'ArrayTable' } },
+    { path: '/ArrayTableEffect', name: 'ArrayTableEffect', component: () => import('./components/ArrayTableEffect.vue'), meta: { title: 'ArrayTableEffect' } },
+    { path: '/ArrayTabs', name: 'ArrayTabs', component: () => import('./components/ArrayTabs.vue'), meta: { title: 'ArrayTabs' } },
 ];
 
 const router: VueRouter.Router = VueRouter.createRouter({

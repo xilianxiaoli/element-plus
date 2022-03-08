@@ -150,7 +150,7 @@ export const FormLayout = defineComponent({
       return h(
         'div',
         {
-          ref: 'root',
+          ref: root,
           class: classNames,
         },
         slots

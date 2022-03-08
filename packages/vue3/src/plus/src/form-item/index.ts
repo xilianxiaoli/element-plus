@@ -252,7 +252,7 @@ export const FormBaseItem = defineComponent({
           'div',
           {
             class: `${prefixCls}-label-content`,
-            ref: 'labelContainer',
+            ref: labelContainer,
           },
           {
             default: () => [

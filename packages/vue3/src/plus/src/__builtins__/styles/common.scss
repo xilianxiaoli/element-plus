@@ -28,6 +28,7 @@ $--border-color-base: var(--el-border-color-base);
 $--color-white: var(--el-color-white);
 $--border-color-hover: var(--el-border-color-hover);
 $--card-border-color: var(--el-card-border-color);
+$--font-weight-primary: var(--el-font-weight-primary);
 
 @mixin active {
   border-color: --el-color-primary;

@@ -194,7 +194,7 @@ const ArrayBaseSortHandle = defineComponent({
           attrs: {
             size: 'small',
             type: 'text',
-            icon: 'el-icon-rank',
+            icon: 'Rank',
             ...attrs,
           },
         },
@@ -288,7 +288,7 @@ const ArrayBaseRemove = defineComponent({
           attrs: {
             type: 'text',
             size: 'small',
-            icon: 'el-icon-delete',
+            icon: 'Delete',
           },
           on: {
             click: (e: MouseEvent) => {
@@ -331,7 +331,7 @@ const ArrayBaseMoveDown = defineComponent({
           attrs: {
             size: 'small',
             type: 'text',
-            icon: 'el-icon-arrow-down',
+            icon: 'ArrowDown',
           },
           on: {
             // ...listeners,
@@ -379,7 +379,7 @@ const ArrayBaseMoveUp = defineComponent({
           attrs: {
             size: 'small',
             type: 'text',
-            icon: 'el-icon-arrow-up',
+            icon: 'ArrowUp',
 
           },
           on: {
