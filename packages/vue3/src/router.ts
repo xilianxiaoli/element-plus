@@ -12,6 +12,8 @@ export const routes: VueRouter.RouteRecordRaw[] = [
     { path: '/ArrayTable', name: 'ArrayTable', component: () => import('./components/ArrayTable.vue'), meta: { title: 'ArrayTable' } },
     { path: '/ArrayTableEffect', name: 'ArrayTableEffect', component: () => import('./components/ArrayTableEffect.vue'), meta: { title: 'ArrayTableEffect' } },
     { path: '/ArrayTabs', name: 'ArrayTabs', component: () => import('./components/ArrayTabs.vue'), meta: { title: 'ArrayTabs' } },
+    { path: '/FormStep', name: 'FormStep', component: () => import('./components/FormStep.vue'), meta: { title: 'FormStep' } },
+    { path: '/FormTab', name: 'FormTab', component: () => import('./components/FormTab.vue'), meta: { title: 'FormTab' } },
 ];
 
 const router: VueRouter.Router = VueRouter.createRouter({

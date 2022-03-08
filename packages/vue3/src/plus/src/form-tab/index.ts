@@ -74,9 +74,10 @@ const FormTab = observer(
       const field = useField()
       const prefixCls = `${stylePrefix}-form-tab`
       const formTabRef = computed(() => props.formTab ?? createFormTab())
+      const formTabValue = formTabRef.value as IFormTab
 
       const takeActiveKey = (tabs: Tabs) => {
-        return props?.value || formTabRef.value?.activeKey || tabs?.[0]?.name
+        return props?.value || (formTabRef.value as IFormTab).activeKey || tabs?.[0]?.name
       }
 
       const badgedHeader = (key: SchemaKey, props: any) => {
@@ -107,9 +108,9 @@ const FormTab = observer(
             ...attrs,
             class: [prefixCls],
             modelValue: activeKey,
-            onChange: (key: string) => {
-              emit('input', key)
-              formTabRef.value.setActiveKey?.(key)
+            'onUpdate:modelValue': (key: string) => {
+              emit('input', key);
+              formTabValue.setActiveKey?.(key)
             },
           },
           {
@@ -142,7 +143,7 @@ const FormTab = observer(
 const FormTabPane = defineComponent<IFormTabPaneProps>({
   name: 'FFormTabPane',
   setup(_props, { slots }) {
-    return () => h(Fragment, {}, slots)
+    return () => h('div', {}, slots)
   },
 })
 

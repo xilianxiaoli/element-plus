@@ -1,8 +1,10 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-  <router-link class="router" v-for="i in routers" :to="i.path">{{
-    i.meta.title
-  }}</router-link>
+  <div class="link">
+    <router-link class="router" v-for="i in routers" :to="i.path">{{
+      i.meta.title
+    }}</router-link>
+  </div>
   <br />
   <div>
     <router-view></router-view>
@@ -30,6 +32,7 @@ export default defineComponent({
 
 <style>
 #app {
+    max-width: 800px;
     margin-top: 60px;
 
     text-align: center;
@@ -44,5 +47,11 @@ export default defineComponent({
 
 .router {
     margin: 10px;
+}
+
+.link {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 </style>

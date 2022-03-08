@@ -108,7 +108,7 @@ const createFormStep = (defaultCurrent = 0): IFormStep => {
       try {
         await env.form.validate()
         next()
-      } catch {}
+      } catch { }
     },
     async back() {
       back()
@@ -185,6 +185,7 @@ const FormStepInner = observer(
 
 const StepPane = defineComponent({
   name: 'FFormStepPane',
+  emits: ['change', 'focus', 'blur'],
   setup(_props, { slots }) {
     return () => h(Fragment, {}, slots)
   },
