@@ -1,9 +1,9 @@
 <template>
   <FormLayout :labelCol="6" :wrapperCol="10">
     <SchemaField :schema="schema" />
-    <Footer>
+    <Footer1>
       <span style="margin-left: 4px">扩展文案</span>
-    </Footer>
+    </Footer1>
   </FormLayout>
 </template>
 
@@ -24,7 +24,7 @@ export default defineComponent({
     FormDialog,
     FormLayout,
     SchemaField,
-    Footer: FormDialog.Footer,
+    Footer1: FormDialog.Footer,
   },
   data() {
     const schema = {

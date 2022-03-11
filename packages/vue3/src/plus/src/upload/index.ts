@@ -5,7 +5,7 @@ import { connect, mapProps, useField, Fragment, h } from '@formily/vue'
 import type {
   ElUpload as ElUploadProps,
   UploadFile,
-} from 'element-plus/es/components/upload/src/upload.type'
+} from 'element-plus'
 
 import { ElUpload, ElButton } from 'element-plus'
 

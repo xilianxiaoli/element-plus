@@ -14,6 +14,7 @@ export const routes: VueRouter.RouteRecordRaw[] = [
     { path: '/ArrayTabs', name: 'ArrayTabs', component: () => import('./components/ArrayTabs.vue'), meta: { title: 'ArrayTabs' } },
     { path: '/FormStep', name: 'FormStep', component: () => import('./components/FormStep.vue'), meta: { title: 'FormStep' } },
     { path: '/FormTab', name: 'FormTab', component: () => import('./components/FormTab.vue'), meta: { title: 'FormTab' } },
+    { path: '/TestInput', name: 'TestInput', component: () => import('./components/TestInput.vue'), meta: { title: 'TestInput' } },
 ];
 
 const router: VueRouter.Router = VueRouter.createRouter({

@@ -10,7 +10,7 @@ import type { ElTabs as TabsProps } from 'element-plus'
 export const ArrayTabs = observer(
   defineComponent({
     name: 'ArrayTabs',
-    props: [],
+    props: ['onChange'],
     setup(props, { attrs, emit }) {
       const fieldRef = useField<ArrayField>()
       const schemaRef = useFieldSchema()
@@ -123,7 +123,7 @@ export const ArrayTabs = observer(
               addable: true,
             },
             on: {
-              input: (key) => {
+              'update:modelValue': (key) => {
                 activeKey.value = key
               },
               'tab-remove': (target) => {
