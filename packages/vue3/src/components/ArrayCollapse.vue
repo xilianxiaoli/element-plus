@@ -62,16 +62,6 @@ export default defineComponent({
                 type: "string",
                 "x-decorator": "FormItem",
                 title: "Input",
-                enum: [
-                  {
-                    label: "选项1",
-                    value: 1,
-                  },
-                  {
-                    label: "选项2",
-                    value: 2,
-                  },
-                ],
                 required: true,
                 "x-component": "Input",
               },

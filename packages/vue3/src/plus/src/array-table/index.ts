@@ -223,15 +223,26 @@ const schedulerRequest = {
   request: null,
 }
 
+interface Icc {
+  value: Number,
+  onChange: Function,
+  pageSize: Number,
+  options: Array<any>,
+}
+
 const StatusSelect = observer(
   defineComponent({
+    name: 'StatusSelect',
     props: {
       value: Number,
       onChange: Function,
-      options: [],
+      options: {
+        type: Array,
+        default: () => <any>[]
+      },
       pageSize: Number,
     },
-    setup(props) {
+    setup(props: Icc) {
       const fieldRef = useField<ArrayField>()
       const prefixCls = `${stylePrefix}-array-table`
 
@@ -260,7 +271,7 @@ const StatusSelect = observer(
               },
             ],
             props: {
-              value: props.value,
+              modelValue: props.value,
               popperClass: `${prefixCls}-status-select-dropdown`,
             },
             on: {
@@ -352,7 +363,7 @@ const ArrayTablePagination = defineComponent({
         },
         {
           default: () =>
-            h(
+            [h(
               Space,
               {},
               {
@@ -383,7 +394,7 @@ const ArrayTablePagination = defineComponent({
                         currentPage: current.value,
                       },
                       on: {
-                        'current-change': (val: number) => {
+                        'update:currentPage': (val: number) => {
                           current.value = val
                         },
                       },
@@ -392,7 +403,7 @@ const ArrayTablePagination = defineComponent({
                   ),
                 ],
               }
-            ),
+            )],
         }
       )
     }
@@ -415,9 +426,9 @@ const ArrayTablePagination = defineComponent({
 })
 
 const ArrayTableInner = observer(
-  defineComponent<IArrayTableProps>({
+  defineComponent({
     name: 'FArrayTable',
-    inheritAttrs: false,
+    props: ['onChange'],
     setup(props, { attrs, slots }) {
       const fieldRef = useField<ArrayField>()
       const schemaRef = useFieldSchema()

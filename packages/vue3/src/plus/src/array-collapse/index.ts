@@ -90,6 +90,7 @@ export const ArrayCollapseInner = observer(
         type: Number,
         default: 5,
       },
+      onChange: Function
     },
     setup(props, { attrs }) {
       const fieldRef = useField<ArrayField>()
@@ -122,7 +123,6 @@ export const ArrayCollapseInner = observer(
           if (!dataSource.length) {
             return null
           }
-          console.log("dataSource:", dataSource);
           const items = dataSource?.map((item, index) => {
             const items = Array.isArray(schema.items)
               ? schema.items[index] || schema.items[0]
@@ -368,7 +368,8 @@ export const ArrayCollapseInner = observer(
 
 export const ArrayCollapseItem = defineComponent({
   name: 'FArrayCollapseItem',
-  setup(_props: typeof CollapseItemProps, { slots }) {
+  props: ['onChange'],
+  setup(_props, { slots }) {
     return () => h('span', {}, slots)
   },
 })

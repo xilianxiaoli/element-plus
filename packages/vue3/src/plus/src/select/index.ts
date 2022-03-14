@@ -71,5 +71,4 @@ export const Select = connect(
   mapProps({ dataSource: 'options', loading: true }, { value: 'modelValue' }),
   mapReadPretty(PreviewText.Select)
 )
-console.log(Select);
 export default Select

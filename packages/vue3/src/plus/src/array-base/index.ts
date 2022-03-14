@@ -163,7 +163,7 @@ const ArrayBaseInner = defineComponent({
 
 const ArrayBaseItem = defineComponent({
   name: 'ArrayBaseItem',
-  props: ['index', 'record'],
+  props: ['index', 'record', 'onChange'],
   setup(props: IArrayBaseItemProps, { slots }) {
     provide(ItemSymbol, props)
     return () => {

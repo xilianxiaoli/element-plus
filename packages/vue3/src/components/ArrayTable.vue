@@ -31,6 +31,9 @@ export default defineComponent({
           type: "array",
           "x-decorator": "FormItem",
           "x-component": "ArrayTable",
+          "x-component-props": {
+            pagination: { pageSize: 3 },
+          },
           items: {
             type: "object",
             properties: {
