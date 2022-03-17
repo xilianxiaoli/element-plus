@@ -40,7 +40,7 @@ const isOperationComponent = (schema: ISchema) => {
 const ArrayCardsInner = observer(
   defineComponent({
     name: 'FArrayCards',
-    props: [],
+    props: ['onChange'],
     setup(props, { attrs }) {
       const fieldRef = useField<ArrayField>()
       const schemaRef = useFieldSchema()

@@ -7,7 +7,13 @@ import type {
   UploadFile,
 } from 'element-plus'
 
-import { ElUpload, ElButton } from 'element-plus'
+import { ElUpload, ElButton, ElIcon } from 'element-plus'
+
+import {
+  UploadFilled,
+  Upload as UploadIcon,
+  Plus,
+} from '@element-plus/icons-vue'
 
 
 export interface IUploadProps {
@@ -91,7 +97,11 @@ const UploadWrapper = defineComponent<IUploadProps>({
               {},
               {
                 default: () => [
-                  h('i', { staticClass: 'el-icon-upload' }, {}),
+                  h(
+                    ElIcon,
+                    { style: { fontSize: '60px', margin: '40px 0 16px' } },
+                    h(UploadFilled, { color: 'gray' }, {})
+                  ),
                   h(
                     'div',
                     { staticClass: 'el-upload__text' },
@@ -104,9 +114,14 @@ const UploadWrapper = defineComponent<IUploadProps>({
 
           if (listType === 'picture-card') {
             return h(
-              'i',
+              Plus,
               {
-                staticClass: 'el-icon-plus',
+                style: {
+                  width: '28px',
+                  height: '28px',
+                  marginTop: '60px',
+                  color: 'gray',
+                },
               },
               {}
             )
@@ -114,8 +129,13 @@ const UploadWrapper = defineComponent<IUploadProps>({
 
           return h(
             ElButton,
-            { props: { icon: 'el-icon-upload2' } },
-            { default: () => [curProps.textContent] }
+            {},
+            {
+              default: () => [
+                h(UploadIcon, {}, {}),
+                curProps.textContent
+              ]
+            }
           )
         }
       }
