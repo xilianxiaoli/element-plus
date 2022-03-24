@@ -9,10 +9,6 @@ import { isVoidField, Field } from '@formily/core'
 
 export type CascaderProps = typeof ElCascaderProps
 
-const TransformElCascader = transformComponent<CascaderProps>(ElCascader, {
-  change: 'update:modelValue',
-})
-
 export const Cascader = observer(
   defineComponent({
     name: 'FCascader',
