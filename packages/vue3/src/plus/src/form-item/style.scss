@@ -1,8 +1,8 @@
-@use 'sass:math';
-@import '../__builtins__/styles/common.scss';
-@import './var.scss';
-@import './grid.scss';
-@import './animation.scss';
+@use "sass:math";
+@import "../__builtins__/styles/common.scss";
+@import "./var.scss";
+@import "./grid.scss";
+@import "./animation.scss";
 
 .#{$form-item-prefix} {
   display: flex;
@@ -347,7 +347,7 @@
   border-radius: $--border-radius-base;
   border: $border-base;
   padding-right: 8px;
-  transition: $--transition-all;
+  transition: $--all-transition;
   touch-action: manipulation;
   outline: none;
 
